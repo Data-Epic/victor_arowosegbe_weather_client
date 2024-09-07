@@ -145,8 +145,8 @@ print(mul_cities_weather_status(['Kano','Abuja']))
 # print('\n\n')
 # print(mul_cities_weather_status('Ibadan'))
 
-#Testing Error Handling for single cities
-print('Single City API Calls\n')
-print(weather_status(city_name=['Osogbo', 'Ado-Ekiti']))
-print(weather_forecast(city_name='Lagos'))
-print('\n\n')
+# #Testing Error Handling for single cities
+# print('Single City API Calls\n')
+# print(weather_status(city_name=['Osogbo', 'Ado-Ekiti']))
+# print(weather_forecast(city_name='Lagos'))
+# print('\n\n')
