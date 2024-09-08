@@ -3,9 +3,14 @@ Import libraries
 """
 import requests
 import json
+from dotenv import load_dotenv
+import os
 
 
-def weather_status(city_name, unit = 'metric'):
+load_dotenv()
+Key = os.getenv('APIKey')
+
+def weather_status(city_name, unit = 'metric', api_key = Key):
     """
     This function creates an API call to the Openweatherapp API and generates weather
     status for a verified city inputed. 
@@ -25,9 +30,6 @@ def weather_status(city_name, unit = 'metric'):
         403 : Forbidden. Access denied. Wrong API call. Kindly obtained required access.
 
     """    
-
-
-    api_key = "813729884e6a2563a55305dc7ed7b63f"
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     complete_url = base_url + "appid=" + api_key + "&q=" + city_name + "&units=" + unit
     response = requests.get(complete_url) 
@@ -74,7 +76,7 @@ def weather_status(city_name, unit = 'metric'):
     print(f'Humidity level: {hum_level}%')
     print(f'Wind Speed: {wind_speed}m/s')
 
-def weather_forecast(city_name, unit = 'metric'):
+def weather_forecast(city_name, unit = 'metric', api_key = Key):
 
     """
     This function creates an API call to the Openweatherapp API and generates a 5 day weather
@@ -95,7 +97,6 @@ def weather_forecast(city_name, unit = 'metric'):
 
     """      
 
-    api_key = "813729884e6a2563a55305dc7ed7b63f" 
     base_url = "http://api.openweathermap.org/data/2.5/forecast?" 
     complete_url = base_url + "appid=" + api_key + "&q=" + city_name + "&units=" + unit
     response = requests.get(complete_url)
@@ -186,4 +187,4 @@ def mul_cities_weather_forecast(cities):
     for city in cities:
         print(weather_forecast(city_name=city))
 
-
+print(weather_status('Osogbo'))
